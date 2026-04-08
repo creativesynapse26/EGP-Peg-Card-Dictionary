@@ -43,17 +43,13 @@ body {
   border-bottom: 1px solid #ddd;
   padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
-.nav-left,
-.nav-right {
+.nav-center {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
   align-items: center;
 }
 

@@ -13,13 +13,8 @@ body {
 }
 
 .logo {
-  width: 500px;
-  height: auto;
-  margin-bottom: 25px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+  width: 260px;
+  margin-bottom: 10px;
 }
 
 .subtitle {

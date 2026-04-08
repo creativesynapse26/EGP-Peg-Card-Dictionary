@@ -15,6 +15,26 @@
     </p>
   </header>
 
+  <nav class="top-nav">
+    <div class="nav-left">
+      <button onclick="scrollToSection(1)">Section 1</button>
+      <button onclick="scrollToSection(2)">Section 2</button>
+      <button onclick="scrollToSection(3)">Section 3</button>
+      <button onclick="scrollToSection(4)">Section 4</button>
+    </div>
+
+    <div class="nav-right">
+      <input
+        type="number"
+        id="cardSearch"
+        min="1"
+        max="31"
+        placeholder="Find card #"
+      />
+      <button onclick="jumpToCard()">Go</button>
+    </div>
+  </nav>
+
   <main class="container">
     <section>
       <h2>Section 1</h2>
@@ -37,13 +57,16 @@
     </section>
   </main>
 
-  <!-- Modal -->
   <div id="cardModal" class="modal hidden">
     <div class="modal-content">
       <button class="close-btn" id="closeModal">&times;</button>
       <img id="modalImage" src="" alt="Peg Card Full View" />
       <h3 id="modalTitle"></h3>
       <p id="modalDescription"></p>
+      <div class="modal-nav">
+        <button id="prevCardBtn">← Previous</button>
+        <button id="nextCardBtn">Next →</button>
+      </div>
     </div>
   </div>
 

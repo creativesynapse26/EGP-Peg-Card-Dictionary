@@ -5,7 +5,6 @@ const sections = {
   4: { start: 29, end: 31 }
 };
 
-// Put your real explanations here later
 const cardDescriptions = {
   1: "Explain how the three peg images connect to number 1.",
   2: "Explain how the three peg images connect to number 2.",
@@ -45,17 +44,75 @@ const modalImage = document.getElementById("modalImage");
 const modalTitle = document.getElementById("modalTitle");
 const modalDescription = document.getElementById("modalDescription");
 const closeModalBtn = document.getElementById("closeModal");
+const prevCardBtn = document.getElementById("prevCardBtn");
+const nextCardBtn = document.getElementById("nextCardBtn");
+
+let currentCardNumber = null;
+
+function scrollToSection(section) {
+  document.getElementById(`section-${section}`).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function clearSelectedCards() {
+  document.querySelectorAll(".peg-card.selected").forEach(card => {
+    card.classList.remove("selected");
+  });
+}
+
+function highlightCard(cardNumber) {
+  clearSelectedCards();
+  const cardEl = document.querySelector(`.peg-card[data-card-number="${cardNumber}"]`);
+  if (cardEl) {
+    cardEl.classList.add("selected");
+  }
+}
 
 function openModal(cardNumber) {
+  currentCardNumber = cardNumber;
   modalImage.src = `assets/cards/${cardNumber}.png`;
   modalImage.alt = `Card ${cardNumber}`;
   modalTitle.textContent = `Card ${cardNumber}`;
   modalDescription.textContent = cardDescriptions[cardNumber] || "No explanation added yet.";
   modal.classList.remove("hidden");
+  highlightCard(cardNumber);
 }
 
 function closeModal() {
   modal.classList.add("hidden");
+}
+
+function goToPreviousCard() {
+  if (currentCardNumber > 1) {
+    openModal(currentCardNumber - 1);
+  }
+}
+
+function goToNextCard() {
+  if (currentCardNumber < 31) {
+    openModal(currentCardNumber + 1);
+  }
+}
+
+function jumpToCard() {
+  const input = document.getElementById("cardSearch");
+  const cardNumber = parseInt(input.value, 10);
+
+  if (isNaN(cardNumber) || cardNumber < 1 || cardNumber > 31) {
+    alert("Enter a card number from 1 to 31.");
+    return;
+  }
+
+  const cardEl = document.querySelector(`.peg-card[data-card-number="${cardNumber}"]`);
+  if (cardEl) {
+    cardEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    highlightCard(cardNumber);
+
+    setTimeout(() => {
+      openModal(cardNumber);
+    }, 350);
+  }
 }
 
 function renderCards() {
@@ -66,6 +123,7 @@ function renderCards() {
     for (let i = start; i <= end; i++) {
       const cardEl = document.createElement("div");
       cardEl.className = "peg-card";
+      cardEl.setAttribute("data-card-number", i);
 
       cardEl.innerHTML = `
         <img src="assets/cards/${i}.png" alt="Card ${i}">
@@ -82,6 +140,8 @@ function renderCards() {
 }
 
 closeModalBtn.addEventListener("click", closeModal);
+prevCardBtn.addEventListener("click", goToPreviousCard);
+nextCardBtn.addEventListener("click", goToNextCard);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
@@ -89,9 +149,21 @@ modal.addEventListener("click", (event) => {
   }
 });
 
+document.getElementById("cardSearch").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    jumpToCard();
+  }
+});
+
 document.addEventListener("keydown", (event) => {
+  if (modal.classList.contains("hidden")) return;
+
   if (event.key === "Escape") {
     closeModal();
+  } else if (event.key === "ArrowLeft") {
+    goToPreviousCard();
+  } else if (event.key === "ArrowRight") {
+    goToNextCard();
   }
 });
 

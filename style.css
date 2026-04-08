@@ -7,13 +7,13 @@ body {
 
 .hero {
   text-align: center;
-  padding: 40px 20px 20px;
-  background: white;
-  border-bottom: 1px solid #ddd;
+  padding: 60px 20px 30px;
+  background: #070341;
+  color: white;
 }
 
 .logo {
-  width: 260px;
+  width: 500px;
   height: auto;
   margin-bottom: 25px;
   display: block;
@@ -23,9 +23,7 @@ body {
 }
 
 .subtitle {
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .container {

@@ -302,9 +302,21 @@ function jumpToCard() {
   }
 }
 
+function getSection(card) {
+  if (card.number >= 1 && card.number <= 10) return 1;
+
+  const titleNumber = parseInt(card.title.replace(/\D/g, ""), 10);
+
+  if ([10, 20, 30, 40, 50, 60, 70, 80, 90].includes(titleNumber)) return 2;
+  if ([11, 22, 33, 44, 55, 66, 77, 88, 99].includes(titleNumber)) return 3;
+
+  return 4;
+}
+
 function renderCards() {
   cards.forEach(card => {
-    const container = document.getElementById(`section-${card.section}`);
+    const section = getSection(card);
+    const container = document.getElementById(`section-${section}`);
     if (!container) return;
 
     const cardEl = document.createElement("div");

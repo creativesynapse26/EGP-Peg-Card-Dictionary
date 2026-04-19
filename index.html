@@ -22,11 +22,11 @@
         id="cardSearch"
         min="1"
         max="31"
-        placeholder="Jump to card #"
+        placeholder="Jump to card (1–31)"
       />
       <button onclick="jumpToCard()">Go</button>
     </div>
-</nav>
+  </nav>
 
   <main class="container">
     <section>
@@ -52,10 +52,11 @@
 
   <div id="cardModal" class="modal hidden">
     <div class="modal-content">
-      <button class="close-btn" id="closeModal">&times;</button>
+      <button class="close-btn" id="closeModal" aria-label="Close modal">&times;</button>
       <img id="modalImage" src="" alt="Peg Card Full View" />
       <h3 id="modalTitle"></h3>
       <p id="modalDescription"></p>
+
       <div class="modal-nav">
         <button id="prevCardBtn">← Previous</button>
         <button id="nextCardBtn">Next →</button>

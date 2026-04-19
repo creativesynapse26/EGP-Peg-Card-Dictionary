@@ -81,6 +81,7 @@ function openModal(cardNumber) {
 
 function closeModal() {
   modal.classList.add("hidden");
+  clearSelectedCards(); // <-- this line fixes it
 }
 
 function goToPreviousCard() {

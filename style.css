@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -11,7 +15,7 @@ body {
 
 .hero {
   text-align: center;
-  padding: 30px 20px 20px;
+  padding: 28px 20px 18px;
   background: #070341;
   color: white;
 }
@@ -19,20 +23,20 @@ body {
 .logo {
   width: 260px;
   height: auto;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero h1 {
   margin: 0 0 10px;
+  font-size: 2.2rem;
 }
 
 .subtitle {
   color: rgba(255, 255, 255, 0.82);
   max-width: 700px;
   margin: 0 auto;
+  font-size: 1rem;
 }
 
 .top-nav {
@@ -57,7 +61,7 @@ body {
   padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 160px;
+  width: 170px;
   font-size: 14px;
 }
 
@@ -79,45 +83,46 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
-  padding: 30px 20px 60px;
+  padding: 30px 28px 60px;
 }
 
 section {
-  margin-bottom: 50px;
+  margin-bottom: 56px;
   scroll-margin-top: 90px;
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin: 0 0 20px;
   border-left: 5px solid #d4af37;
   padding-left: 12px;
+  font-size: 2rem;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
 }
 
 .peg-card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .peg-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
 .peg-card:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 .peg-card.selected {
@@ -131,13 +136,14 @@ h2 {
 }
 
 .peg-card .info {
-  padding: 15px;
+  padding: 18px 16px 20px;
 }
 
 .peg-card h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: 1.05rem;
   text-align: center;
+  font-weight: 700;
 }
 
 /* Modal */
@@ -159,14 +165,14 @@ h2 {
 .modal-content {
   background: white;
   width: 100%;
-  max-width: 800px;
-  border-radius: 18px;
-  padding: 20px;
+  max-width: 860px;
+  border-radius: 22px;
+  padding: 22px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
   overflow-y: auto;
-  animation: modalPop 0.25s ease;
+  animation: modalPop 0.24s ease;
 }
 
 @keyframes modalPop {
@@ -182,28 +188,28 @@ h2 {
 
 .modal-content img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
 }
 
 .modal-content h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  font-size: 30px;
+  margin: 0 0 12px;
+  font-size: 2rem;
 }
 
 .modal-content p {
   color: #444;
-  line-height: 1.7;
-  font-size: 17px;
+  line-height: 1.75;
+  font-size: 1.08rem;
   white-space: pre-line;
+  margin: 0;
 }
 
 .modal-nav {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .modal-nav button {
@@ -223,13 +229,24 @@ h2 {
 
 .close-btn {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 14px;
-  font-size: 30px;
+  font-size: 32px;
+  line-height: 1;
   border: none;
   background: transparent;
   cursor: pointer;
   color: #333;
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -241,8 +258,16 @@ h2 {
     width: 200px;
   }
 
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
   .top-nav input {
-    width: 140px;
+    width: 145px;
+  }
+
+  .container {
+    padding: 24px 16px 50px;
   }
 
   .modal-content {
@@ -250,10 +275,10 @@ h2 {
   }
 
   .modal-content h3 {
-    font-size: 24px;
+    font-size: 1.6rem;
   }
 
-  .peg-card h3 {
-    font-size: 20px;
+  .modal-content p {
+    font-size: 1rem;
   }
 }

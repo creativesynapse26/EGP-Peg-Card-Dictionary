@@ -168,21 +168,23 @@ const cards = [
     title: "Peg 99",
     modalText: `Write the full explanation for Peg 99 here.`,
   },
-
   {
     number: 29,
+    sectionOverride: 4,
     image: "assets/cards/29.png",
     title: "Special Peg 1",
     modalText: `Write the full explanation for this special peg here.`,
   },
   {
     number: 30,
+    sectionOverride: 4,
     image: "assets/cards/30.png",
     title: "Special Peg 2",
     modalText: `Write the full explanation for this special peg here.`,
   },
   {
     number: 31,
+    sectionOverride: 4,
     image: "assets/cards/31.png",
     title: "Special Peg 3",
     modalText: `Write the full explanation for this special peg here.`,
@@ -218,6 +220,10 @@ function highlightCard(cardNumber) {
 }
 
 function getSection(card) {
+  if (card.sectionOverride) {
+    return card.sectionOverride;
+  }
+
   const titleNumber = parseInt(card.title.replace(/\D/g, ""), 10);
 
   if (!Number.isNaN(titleNumber) && titleNumber >= 0 && titleNumber <= 9) {
